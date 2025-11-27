@@ -15,8 +15,8 @@ class RegisterForm(FlaskForm):
     confirm_password = PasswordField('Confirmar Senha', validators=[DataRequired(), EqualTo('password')])
     submit = SubmitField('Criar Conta')
 
-    def validate_email(self, field):
-        user = User.query.filter_by(email=field.data).first()
+    def validate_email(self, email):
+        user = User.query.filter_by(email=email.data).first()
         if user:
             return ValidationError("E-mail já cadastrado. Por favor insira outro e-mail ou faça login.")
         return None
