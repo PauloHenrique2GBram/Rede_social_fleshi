@@ -13,7 +13,7 @@ class User(database.Model, UserMixin):
     username = database.Column(database.String(20), unique=True, nullable=False)
     email = database.Column(database.String(100), unique=True, nullable=False)
     password = database.Column(database.String(40), nullable=False)
-    photo = database.relationship('Photo', backref='user', lazy=True)
+    photos = database.relationship('Photo', backref='user', lazy=True)
     pass
 
 class Photo(database.Model):
